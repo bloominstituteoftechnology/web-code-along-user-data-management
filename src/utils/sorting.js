@@ -65,71 +65,10 @@ export const sortByState = (arr) => {
   return sorter;
 };
 
-// IMPLEMENT IN 1.1 STEP 2
-// export const sortByEmail = (arr) => {
-//   const newArr = [...arr];
-
-//   return returnVal;
-// };
-// IMPLEMENT IN 1.1 STEP 2
-
-// IMPLEMENT IN 1.1 STEP 3
 export const sortByEmail = (arr) => {
-  const newArr = [...arr];
 
-  const filtered = [];
-  const empty = [];
-  for (let i = 0; i < newArr.length; i++) {
-    if (newArr[i].email === null) {
-      empty.push(newArr[i]);
-    } else {
-      filtered.push(newArr[i]);
-    }
-  }
-
-  const sorter = filtered.sort((a, b) => {
-    if (a.email !== null && b.email !== null) {
-      const emailA = a.email.split("@")[0] || null;
-      const emailB = b.email.split("@")[0] || null;
-
-      if (emailA < emailB) {
-        return -1;
-      } else if (emailA > emailB) {
-        return 1;
-      } else return 0;
-    }
-  });
-
-  const returnVal = [...empty, ...sorter];
-
-  return returnVal;
 };
-// IMPLEMENT IN 1.1 STEP 3
 
-// IMPLEMENT IN 1.1 STEP 4
-export const sortByKey = (arr, key) => {
-  let returnVal;
-  switch (key) {
-    case "email":
-      returnVal = sortByEmail(arr);
-      break;
-    case "username":
-      returnVal = sortByUsername(arr);
-      break;
-    case "lastName":
-      returnVal = sortByLastName(arr);
-      break;
-    case "dob":
-      returnVal = sortByDOB(arr);
-      break;
-    case "state":
-      returnVal = sortByState(arr);
-      break;
-    default:
-      returnVal = arr;
-      break;
-  }
-
-  return returnVal;
+export const sortByKey = (arr) => {
+  
 };
-// IMPLEMENT IN 1.1 STEP 4
