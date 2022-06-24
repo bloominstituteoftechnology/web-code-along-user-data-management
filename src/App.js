@@ -23,38 +23,30 @@ function App() {
     return newData;
   };
 
-  // IMPLEMENT IN 1.2 STEP 2
   const dateCleaner = async (arr) => {
     const newData = await cleanDates(arr);
     setUglyData(newData);
     return newData;
   };
-  // IMPLEMENT IN 1.2 STEP 2
 
-  // IMPLEMENT IN 1.2 STEP 3
   const keyCleaner = async (arr) => {
     const newData = await cleanupUndefinedKeys(arr);
     setUglyData(newData);
     return newData;
   };
-  // IMPLEMENT IN 1.2 STEP 3
   
   return (
     <div className="container">
       <h1>List of Users</h1>
 
       <div className="button-container">
-        {/* IMPLEMENT IN 1.2 STEP 2 */}
         <button onClick={() => dateCleaner([...uglyData])}>
           Fix date values
         </button>
-        {/* IMPLEMENT IN 1.2 STEP 2 */}
 
-        {/* IMPLEMENT IN 1.2 STEP 3 */}
         <button onClick={() => keyCleaner([...uglyData])}>
           Clean unformatted string values
         </button>
-        {/* IMPLEMENT IN 1.2 STEP 3 */}
 
         <button onClick={() => resetData()}>Reset data</button>
       </div>
