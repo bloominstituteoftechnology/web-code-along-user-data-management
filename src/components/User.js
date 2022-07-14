@@ -3,13 +3,14 @@ import '../styles/User.css';
 
 function User(props) {
   return (
+    // IMPLEMENT STEP 1
     <body id="container">
       <div className="user-card">
-        <div className='fields top'>
+        <div className='fields'>
         <h2 className="name" style={props.user.formatted}>Name: {props.user.profile.name !== undefined && props.user.profile.name !== '' ? props.user.profile.name : "undefined"}</h2>
         <h4 className="about" style={props.user.formatted}>About: {props.user.profile.about !== undefined && props.user.profile.about !== '' ? props.user.profile.about : "undefined"}</h4>
         </div>
-      <div className='fields bottom'>
+      <div className='fields'>
         <p style={props.user.formatted}>Username: {props.user.username !== undefined && props.user.username !== '' ? props.user.username : "undefined"}</p>
         <p style={props.user.formatted}>Email: {props.user.email !== undefined && props.user.email !== '' ? props.user.email : "undefined"}</p>
         <p style={props.user.formatted}>DOB: {props.user.profile.dob !== undefined && props.user.profile.dob !== '' ? props.user.profile.dob : "undefined"}</p>
