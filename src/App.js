@@ -129,10 +129,10 @@ function App() {
 
   return (
     <div className="container">
-      <h1>List of Users</h1>
+      <h1 id="main-header">List of Users</h1>
 
       {/* comment in buttons as the associated function is worked on */}
-      <div className="button-container">
+      <div className='button-container nav-bar'>
         <button onClick={() => keyCleaner([...uglyData])}>
           Clean unformatted string values
         </button>
@@ -195,7 +195,7 @@ function App() {
         </button>
       </div> */}
 
-      <div className="button-container">
+      <div className='button-container nav-bar'>
         <button onClick={() => sortGeneric([...uglyData], 'email')}>
           Sort data by email
         </button>
