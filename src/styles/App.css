@@ -212,6 +212,25 @@ table {
   border:2px solid white;
   background-color:rgb(0, 139, 139, .7) ;
 }
+button .button-key-cleaner{
+background-color: green;
+color: white;
+}
+/* button .button-date-cleaner{
+
+}
+button .button-submit{
+
+} */
+button .button-reset{
+  padding: 0;
+  border-radius: 10px;
+  border:2px solid red;
+  background-color:white;
+  color: red
+}
+
+
 
 form {
   background: transparent;
@@ -222,7 +241,4 @@ form {
   margin-top: 2%;
   padding-top: 1%;
   background-color: darkcyan;
- }
- .container h1 {
-
  }

@@ -133,11 +133,11 @@ function App() {
 
       {/* comment in buttons as the associated function is worked on */}
       <div className='button-container nav-bar'>
-        <button onClick={() => keyCleaner([...uglyData])}>
+        <button  className='button-key-cleaner'onClick={() => keyCleaner([...uglyData])}>
           Clean unformatted string values
         </button>
 
-        <button onClick={() => dateCleaner([...uglyData])}>
+        <button className='button-date-cleaner'onClick={() => dateCleaner([...uglyData])}>
           Fix date values
         </button>
 
@@ -151,10 +151,10 @@ function App() {
             <option value="state">state</option>
           </select> */}
           <input onChange={handleChange} placeholder='type here!' />
-          <button type="submit">Search</button>
+          <button className='button-submit' type="submit">Search</button>
         </form>
 
-        <button onClick={() => resetData()}>
+        <button className='button-reset' onClick={() => resetData()}>
           Reset data
         </button>
       </div>
