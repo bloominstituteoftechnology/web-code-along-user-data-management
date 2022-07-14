@@ -3,8 +3,9 @@ import '../styles/User.css';
 
 function User(props) {
   return (
-    <body id="container">
+    
     <div className="user-card">
+      <body id="container">
       <div className='fields top'>
         <h2 className="name" style={props.user.formatted}>Name: {props.user.profile.name !== undefined && props.user.profile.name !== '' ? props.user.profile.name : "undefined"}</h2>
         <h4 className="about" style={props.user.formatted}>About: {props.user.profile.about !== undefined && props.user.profile.about !== '' ? props.user.profile.about : "undefined"}</h4>
@@ -17,8 +18,8 @@ function User(props) {
         <p style={props.user.formatted}>Company: {props.user.profile.company !== undefined && props.user.profile.company !== '' ? props.user.profile.company : "undefined"}</p>
         <p id="no-border" style={props.user.formatted}>Role(s): {props.user.roles !== undefined && props.user.roles !== [] && props.user.roles !== '' ? props.user.roles.map((role) => <span>{role}, </span>) : "undefined"}</p>
       </div>
+     </body>
     </div>
-    </body>
   );
 }
 
