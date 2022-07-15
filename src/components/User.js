@@ -3,7 +3,7 @@ import '../styles/User.css';
 
 function User(props) {
   return (
-    <body id="container">
+    <React.Fragment className="container">
       <div className="user-card">
         <div className='fields top'>
         <h2 className="name" style={props.user.formatted}>Name: {props.user.profile.name !== undefined && props.user.profile.name !== '' ? props.user.profile.name : "undefined"}</h2>
@@ -18,8 +18,7 @@ function User(props) {
         <p id="no-border" style={props.user.formatted}>Role(s): {props.user.roles !== undefined && props.user.roles !== [] && props.user.roles !== '' ? props.user.roles.map((role) => <span>{role}, </span>) : "undefined"}</p>
         </div>
       </div>
-   </body>
-
+   </React.Fragment>
   );
 }
 

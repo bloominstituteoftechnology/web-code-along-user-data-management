@@ -136,9 +136,29 @@ table {
 
 * {
   box-sizing: border-box;
+  font-size: 62.5%;
+  /* DISCUSS IN STEP 3.2 */
   max-width: 100%;
 }
 
+/* DISCUSS IN STEP 3.3 */
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4, h5, h6, p {
+  font-size: 1.5rem;
+}
+
+/* IMPLEMENT IN STEP 1.2 */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -175,14 +195,20 @@ table {
   column-gap: 10px;
 }
 
+/* IMPLEMENT IN STEP 2.2 */
+.users-container::after {
+   content: 'Disclaimer: User List May Include Errors :(';
+}
+
 .button-container {
   width: 100%;
   margin: 1% 0;
-  display: flex;
-  justify-content: center;
   background-color: white;
   border: 2px solid #fff;
   border-radius: 3px;
+  /* IMPLEMENT IN STEP 1.2 */
+  display: flex;
+  justify-content: center;
 }
 
 .nav-bar {
@@ -196,9 +222,23 @@ table {
   border-radius: 5px;
 }
 
+/* IMPLEMENT STEP 2.1 */
+.button-container button:hover {
+  padding: 0;
+  border-radius: 5px;
+  border: 2px solid white;
+  background-color: rib(0, 139, 139, 0.7);
+}
+
 button.button-key-cleaner {
   background-color: white;
   color: green;
+}
+
+/* IMPLEMENT STEP 2.1 */
+button.button-key-cleaner:hover {
+  background-color: green;
+  color: white;
 }
 
 button.button-date-cleaner {
@@ -213,6 +253,20 @@ button.button-reset {
   color: red;
   border: 2px solid red;
   border-radius: 10px;
+}
+
+/* IMPLEMENT STEP 2.1 */
+button.button-reset:hover {
+  padding: 0;
+  border-radius: 10px;
+  border: 2px solid red;
+  background-color: red;
+  color: white;
+}
+
+/* IMPLEMENT STEP 2.3 */
+button.button-submit:focus::after {
+  content: 'Submitted!';
 }
 
 .button-container button,
@@ -231,4 +285,11 @@ h1 #main-header {
   padding-top: 1%;
   background-color: darkcyan;
   font-size: larger;
+}
+
+/* IMPLEMENT IN STEP 3.4 */
+@media (max-width: 350px) {
+  * {
+    background-color: red;
+  }
 }
