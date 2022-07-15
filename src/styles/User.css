@@ -1,55 +1,54 @@
-/* IMPLEMENT STEP 1.3 */
+/* refactor entirely */
 .user-card {
+  
     justify-content: center;
     align-items: center;
     margin: 2%;
-    border: 1px solid rgb(0, 0, 0, .5);
+    border: 1px solid rgb(0, 0, 0, 0.5);
     border-radius: 5px;
     overflow: scroll;
     background-color: #f9fafb;
     color: #6b7280;
     font-weight: 400;
 }
-/* IMPLEMENT STEP 1.2 */
-#container{
-color: #000;
+
+#container {
+  color: #000;
 }
 
 /* IMPLEMENT STEP 1.1 */
 .user-card .fields {
-    padding: 5px 5%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-direction: column;
-  	overflow: scroll;
-    overflow-wrap: break-word;
-  	text-overflow: ellipsis;
-    
+  padding: 5px 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  overflow: scroll;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
 }
 
 /* IMPLEMENT STEP 1.3 */
 .user-card .name {
-    padding: 2.5%;
-    font-size: 2.5rem;
-    background-color: white;
-    border-bottom: 2px solid black;
-    
+  padding: 2.5%;
+  font-size: 2.5rem;
+  background-color: white;
+  border-bottom: 1px solid black;
 }
 
 .user-card .about {
-    padding: 2.5%;
-    font-size: 2rem;
-    background-color: white;
-    border-bottom: 1px solid black;
+  padding: 2.5%;
+  font-size: 2rem;
+  background-color: white;
+  border-bottom: 1px solid black;
 }
 
 .user-card .fields p {
-    padding: 2%;
-    background-color: white;
-    border-bottom: 1px solid black;
+  padding: 2%;
+  background-color: white;
+  border-bottom: 1px solid black;
 }
 
 #no-border {
-    border-bottom: none;
+  border-bottom: none;
 }
