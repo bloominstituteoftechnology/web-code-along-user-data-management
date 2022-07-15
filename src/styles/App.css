@@ -136,14 +136,30 @@ table {
 
 * {
   box-sizing: border-box;
+  font-size: 62.5%;
   max-width: 100%;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4,
+h5,
+h6,
+p {
+  font-size: 1.5rem;
+}
+
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex;
-  align-items: flex;
 }
 
 .container h1 {
@@ -178,8 +194,6 @@ table {
 .button-container {
   width: 100%;
   margin: 1% 0;
-  display: flex;
-  justify-content: center;
   background-color: white;
   border: 2px solid #fff;
   border-radius: 3px;
