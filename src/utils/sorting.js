@@ -67,6 +67,19 @@ export const sortByState = (arr) => {
 
 export const sortByEmail = (arr) => {
 
+  // const sorter = filtered.sort((a, b) => {
+  //   if (a.email !== null && b.email !== null) {
+  //     const emailA = a.email.split("@")[0] || null;
+  //     const emailB = b.email.split("@")[0] || null;
+
+  //     if (emailA < emailB) {
+  //       return -1;
+  //     } else if (emailA > emailB) {
+  //       return 1;
+  //     } else return 0;
+  //   }
+  // });
+  
 };
 
 export const sortByKey = (arr) => {
