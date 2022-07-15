@@ -160,6 +160,7 @@ p {
 }
 
 .container {
+  
 }
 
 .container h1 {
@@ -182,13 +183,7 @@ p {
 
 .users-container {
   height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 1fr;
-  column-gap: 10px;
+  
 }
 
 .button-container {
@@ -197,6 +192,7 @@ p {
   background-color: white;
   border: 2px solid #fff;
   border-radius: 3px;
+
 }
 
 .nav-bar {
