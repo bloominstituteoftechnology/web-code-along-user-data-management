@@ -1,4 +1,4 @@
-# web-code-along-user-data-management-advanced-styling-techniques-starter
+# Code-Along 3.2 - Advanced Styling Techniques - Starter
 
 ## Setup
 1. Clone the project
