@@ -1,4 +1,4 @@
-# web-code-along-user-data-management-intro-to-javascript-solution
+# Code-Along 1.1 - Intro to JavaScript - Solution
 
 ## Setup
 1. Clone the project
