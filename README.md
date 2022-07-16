@@ -1,4 +1,4 @@
-# web-code-along-user-data-management-general-styling-solution
+# Code-Along 3.1 - General Styling - Solution
 
 ## Setup
 1. Clone the project
