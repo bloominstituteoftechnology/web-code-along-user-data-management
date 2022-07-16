@@ -1,4 +1,4 @@
-# web-code-along-user-data-management-arrays-and-objects-solution
+# Code-Along 1.2 - Arrays and Objects - Solution
 
 ## Setup
 1. Clone the project
