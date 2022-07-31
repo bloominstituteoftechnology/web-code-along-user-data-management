@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import _uglyData from "./utils/uglify";
-// import {
-//   sortByKey,
-//   sortByEmail,
-//   sortByUsername,
-//   sortByLastName,
-//   sortByDOB,
-//   sortByState
-// } from "./utils/sorting";
+import {
+  sortByKey,
+  sortByEmail,
+  sortByUsername,
+  sortByLastName,
+  sortByDOB,
+  sortByState
+} from "./utils/sorting";
 import User from "./components/User";
 import "./styles/App.css";
 
@@ -23,41 +23,41 @@ function App() {
     setUglyData(initialData);
   };
 
-  // const sortUsername = (arr) => {
-  //   const newData = sortByUsername(arr);
-  //   setUglyData(newData);
-  //   return newData;
-  // };
+  const sortUsername = (arr) => {
+    const newData = sortByUsername(arr);
+    setUglyData(newData);
+    return newData;
+  };
 
-  // const sortLastName = (arr) => {
-  //   const newData = sortByLastName(arr);
-  //   setUglyData(newData);
-  //   return newData;
-  // };
+  const sortLastName = (arr) => {
+    const newData = sortByLastName(arr);
+    setUglyData(newData);
+    return newData;
+  };
 
-  // const sortDOB = (arr) => {
-  //   const newData = sortByDOB(arr);
-  //   setUglyData(newData);
-  //   return newData;
-  // };
+  const sortDOB = (arr) => {
+    const newData = sortByDOB(arr);
+    setUglyData(newData);
+    return newData;
+  };
 
-  // const sortState = (arr) => {
-  //   const newData = sortByState(arr);
-  //   setUglyData(newData);
-  //   return newData;
-  // };
+  const sortState = (arr) => {
+    const newData = sortByState(arr);
+    setUglyData(newData);
+    return newData;
+  };
   
-  // const sortEmail = (arr) => {
-  //   const newData = sortByEmail(arr);
-  //   setUglyData(newData);
-  //   return newData;
-  // };
+  const sortEmail = (arr) => {
+    const newData = sortByEmail(arr);
+    setUglyData(newData);
+    return newData;
+  };
     
-  // const sortGeneric = (arr, key) => {
-  //   const newData = sortByKey(arr, key);
-  //   setUglyData(newData);
-  //   return newData;
-  // };
+  const sortGeneric = (arr, key) => {
+    const newData = sortByKey(arr, key);
+    setUglyData(newData);
+    return newData;
+  };
 
   return (
     <div className="container">
