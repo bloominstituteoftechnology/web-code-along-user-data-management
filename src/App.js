@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import _uglyData from "./utils/uglify";
 import { cleanupUndefinedKeys, cleanDates } from "./utils/data-clean";
 import { sortByKey } from "./utils/sorting";
-import { filterByNameEmail } from "./utils/filtering";
+import { filter } from "./utils/filtering";
 
 import User from "./components/User";
 
@@ -12,7 +12,9 @@ import "./styles/App.css";
 function App() {
   const [initialData] = useState(_uglyData);
   const [uglyData, setUglyData] = useState(initialData);
-  const [optionsState, setOptionsState] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [field, setField] = useState("");
+  const [userCount, setUserCount] = useState(initialData.length);
 
   const rtt = () => {
     document.documentElement.scrollTop = 0;
@@ -22,74 +24,81 @@ function App() {
     setUglyData(initialData);
   };
 
-  const keyCleaner = async (arr) => {
-    const newData = await cleanupUndefinedKeys(arr);
+  const sortGeneric = (arr, key) => {
+    const newData = sortByKey(arr, key);
     setUglyData(newData);
-    return newData;
   };
 
   const dateCleaner = async (arr) => {
     const newData = await cleanDates(arr);
     setUglyData(newData);
-    return newData;
   };
 
-  const sortGeneric = (arr, key) => {
-    const newData = sortByKey(arr, key);
+  const keyCleaner = async (arr) => {
+    const newData = await cleanupUndefinedKeys(arr);
     setUglyData(newData);
-    return newData;
   };
 
-  const filterGeneric = () => {
-    const newData = filterByNameEmail(uglyData, optionsState);
+  const searchTermSetter = (e) => {
+    setSearchTerm(e.target.value);
+  }
+
+  const fieldSetter = (e) => {
+    setField(e.target.value);
+  }
+
+  const search = async (e) => {
+    e.preventDefault();
+    const newData = await filter(uglyData, field, searchTerm);
     setUglyData(newData);
-    return newData;
-  };
+  }
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setOptionsState(e.target.value);
-    return e.target.value;
-  };
+  const countUsers = (arr) => {
+    const reduce = arr.reduce((accumulator) => {
+      return accumulator += 1;
+    }, 0);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const newData = filterGeneric();
-    return newData;
-  };
+    setUserCount(reduce);
+    return reduce;
+  }
 
   return (
-    <div className="container">
-      <h1 id="main-header">List of Users</h1>
+    <div className="">
+      <h1>List of Users</h1>
 
-      <div className="button-container nav-bar">
-        <button
-          className="button-key-cleaner"
-          onClick={() => keyCleaner([...uglyData])}
-        >
-          Clean unformatted string values
-        </button>
-
-        <button
-          className="button-date-cleaner"
-          onClick={() => dateCleaner([...uglyData])}
-        >
+      <div className="button-container">
+        <button onClick={() => dateCleaner([...uglyData])}>
           Fix date values
         </button>
 
-        <form onSubmit={onSubmit}>
-          <input onChange={handleChange} placeholder="type here!" />
-          <button className="button-submit" type="submit">
-            Search
-          </button>
+        <button onClick={() => keyCleaner([...uglyData])}>
+          Clean unformatted string values
+        </button>
+
+        <form onSubmit={search}>
+          <input
+            name="searchTerm"
+            type="text"
+            onChange={searchTermSetter}
+            placeholder="Search..."
+          />
+
+          <select name="field" onChange={fieldSetter}>
+            <option value="">Field</option>
+            <option value="name">Name</option>
+            <option value="username">Username</option>
+            <option value="email">Email</option>
+            <option value="company">Company</option>
+            <option value="address">Address</option>
+          </select>
+
+          <button type="submit">Submit</button>
         </form>
 
-        <button className="button-reset" onClick={() => resetData()}>
-          Reset data
-        </button>
+        <button onClick={() => resetData()}>Reset data</button>
       </div>
 
-      <div className="button-container nav-bar">
+      <div className="button-container">
         <button onClick={() => sortGeneric([...uglyData], "email")}>
           Sort data by email
         </button>
@@ -105,6 +114,11 @@ function App() {
         <button onClick={() => sortGeneric([...uglyData], "state")}>
           Sort data by state
         </button>
+      </div>
+
+      <div id="user-count" className="button-container">
+        <h2>Users: {userCount}</h2>
+        <button onClick={() => countUsers(uglyData)}>Update</button>
       </div>
 
       <div className="users-container">
