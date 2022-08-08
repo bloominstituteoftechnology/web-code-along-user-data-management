@@ -1,18 +1,29 @@
+export const splitData = (arr) => {
+  const newArr = [...arr];
+  const goodData = [];
+  const badData = [];
+
+  for (let i = 0; i < newArr.length; i++) {
+    if (newArr[i][key] === null || newArr[i][key] === undefined || newArr[i][key] === "") {
+      badData.push(newArr[i]);
+    } else {
+      goodData.push(newArr[i]);
+    }
+  }
+  
+  return [...goodData, ...badData];
+};
+
 export const sortByUsername = (arr) => {
   const newArr = [...arr];
+  
   const sorter = newArr.sort((a, b) => {
-    if (a.username === null || a.username === "") {
-      return -2;
-    } else if (a.username === null || b.username === "") {
-      return -2;
-    }
+    let usernameA = a.username;
+    let usernameB = b.username;
 
-    let strippedA = a.username;
-    let strippedB = b.username;
-
-    if (strippedA < strippedB) {
+    if (usernameA < usernameB) {
       return -1;
-    } else if (strippedA > strippedB) {
+    } else if (usernameA > usernameB) {
       return 1;
     } else return 0;
   });
@@ -22,6 +33,7 @@ export const sortByUsername = (arr) => {
 
 export const sortByLastName = (arr) => {
   const newArr = [...arr];
+
   const sorter = newArr.sort((a, b) => {
     const lNameA = a.profile.name.split(" ")[1].trim();
     const lNameB = b.profile.name.split(" ")[1].trim();
@@ -38,10 +50,14 @@ export const sortByLastName = (arr) => {
 
 export const sortByDOB = (arr) => {
   const newArr = [...arr];
+
   const sorter = newArr.sort((a, b) => {
-    if (a.profile.dob < b.profile.dob) {
+    const dobA = a.profile.dob;
+    const dobB = b.profile.dob;
+
+    if (dobA < dobB) {
       return -1;
-    } else if (a.profile.dob > b.profile.dob) {
+    } else if (dobA > dobB) {
       return 1;
     } else return 0;
   });
@@ -55,6 +71,7 @@ export const sortByState = (arr) => {
   const sorter = newArr.sort((a, b) => {
     const stateA = a.profile.address.split(",")[2].trim();
     const stateB = b.profile.address.split(",")[2].trim();
+
     if (stateA < stateB) {
       return -1;
     } else if (stateA > stateB) {
@@ -65,48 +82,23 @@ export const sortByState = (arr) => {
   return sorter;
 };
 
-// IMPLEMENT IN 1.1 STEP 2
-// export const sortByEmail = (arr) => {
-//   const newArr = [...arr];
-
-//   return returnVal;
-// };
-// IMPLEMENT IN 1.1 STEP 2
-
-// IMPLEMENT IN 1.1 STEP 3
 export const sortByEmail = (arr) => {
   const newArr = [...arr];
 
-  const filtered = [];
-  const empty = [];
-  for (let i = 0; i < newArr.length; i++) {
-    if (newArr[i].email === null) {
-      empty.push(newArr[i]);
-    } else {
-      filtered.push(newArr[i]);
-    }
-  }
-
-  const sorter = filtered.sort((a, b) => {
-    if (a.email !== null && b.email !== null) {
-      const emailA = a.email.split("@")[0] || null;
-      const emailB = b.email.split("@")[0] || null;
+  const sorter = newArr.sort((a, b) => {
+      const emailA = a.email.split("@")[0];
+      const emailB = b.email.split("@")[0];
 
       if (emailA < emailB) {
         return -1;
       } else if (emailA > emailB) {
         return 1;
       } else return 0;
-    }
   });
 
-  const returnVal = [...empty, ...sorter];
-
-  return returnVal;
+  return sorter;
 };
-// IMPLEMENT IN 1.1 STEP 3
 
-// IMPLEMENT IN 1.1 STEP 4
 export const sortByKey = (arr, key) => {
   let returnVal;
   switch (key) {
@@ -132,4 +124,3 @@ export const sortByKey = (arr, key) => {
 
   return returnVal;
 };
-// IMPLEMENT IN 1.1 STEP 4
