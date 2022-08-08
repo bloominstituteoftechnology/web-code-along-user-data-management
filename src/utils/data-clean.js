@@ -3,39 +3,31 @@ const hasCorrectFormat = (date) => {
     if(date.includes('-')) {
         dateArr = date.split('-');
 
-        // this would be MM-DD or YYYY-MM or similar
         if(dateArr.length !== 3) {
             return false;
-            // this would be non-ISO standards that still do use -
         } else if(dateArr[0].length !== 4 || dateArr[1].length !== 2 || dateArr[2].length !== 2) {
             return false;
         } else return true;
-        // formats with / are incorrect
     } else if(date.includes('/')) {
         return false;
     } else return false;
 }
 
-// IMPLEMENT IN 1.2 STEP 2
 export const cleanDates = async (arr) => {
     const returnArr = [];
     
     for(let i = 0; i < arr.length; i++) {
-        // clone object so as to not directly mutate state
         const newObj = {...arr[i]};
         const dob = newObj.profile.dob;
 
         if((dob !== undefined || dob !== '') && hasCorrectFormat(dob) === false) {
-            // could refactor this with a separator param and switch statement
             if(dob.includes('-')) {
                 const dobArr = dob.split('-');
 
-                // this logic would depend on what sort of formats are in the data, but works for our given data structure
                 newObj.profile.dob = `${dobArr[2]}-${dobArr[0]}-${dobArr[1]}`;
             } else if(dob.includes('/')) {
                 const dobArr = dob.split('/');
 
-                // checks for different date string formats
                 if(dobArr[0].length === 4) {
                     newObj.profile.dob = `${dobArr[0]}-${dobArr[1]}-${dobArr[2]}`;
                 } else if(dobArr[2].length === 4) {
@@ -47,7 +39,6 @@ export const cleanDates = async (arr) => {
             } else if(dob.includes(' ')) {
                 const dobArr = dob.split(' ');
 
-                // switch statement for checking month string
                 switch (dobArr[0]) {
                     case "January" || "January,":
                       dobArr[0] = "01";
@@ -91,7 +82,6 @@ export const cleanDates = async (arr) => {
                         break;
                 }
 
-                // trims off comma from Month Day, Year
                 newObj.profile.dob = `${dobArr[2]}-${dobArr[0]}-${dobArr[1]}`.replace(',', '');
             } else {
                 console.warn(`DOB is in unconvertable format, setting to null. Please reset at user level.`);
@@ -99,31 +89,24 @@ export const cleanDates = async (arr) => {
             }
         }
 
-        // updates style to remove error color
         newObj.formatted = { color: 'black' };
         returnArr.push(newObj);
     };
     
     return returnArr;
 }
-// IMPLEMENT IN 1.2 STEP 2
 
-// IMPLEMENT IN 1.2 STEP 3
-export const cleanupUndefinedKeys = async (arr) => {
+export const cleanUndefinedKeys = async (arr) => {
     const returnArr = [];
     
     for(let i = 0; i < arr.length; i++) {
-        // clone object so as to not directly mutate state
         const newObj = {...arr[i]};
         for(let key in newObj) {
-            // exclude nested obj and irrelevant keys
             if((key === 'email' || key === 'username' || key === 'roles') && (newObj[key] === undefined || newObj[key] === '')) {
                 if(key !== 'roles') {
                     newObj[key] = null;
-                    // because 'roles' is an array, set to empty array rather than null
                 } else newObj[key] = [];
             } else if(key === 'profile' && (newObj[key] === undefined || newObj[key] === '')) {
-                // checks nested keys
                 for(let profileKey in newObj[key]) {
                     if((profileKey === 'name' || profileKey === 'about' || profileKey === 'dob' || profileKey === 'address' || profileKey === 'company') && (newObj[key][profileKey] === undefined || newObj[key][profileKey] === '')) {
                         newObj[key][profileKey] = null;
@@ -132,7 +115,6 @@ export const cleanupUndefinedKeys = async (arr) => {
             }
         }
 
-        // if date format is also good, update style to remove error color
         if(hasCorrectFormat(newObj['profile']['dob'])) {
             newObj.formatted = { color: 'black' };
         }
@@ -141,4 +123,3 @@ export const cleanupUndefinedKeys = async (arr) => {
 
     return returnArr;
 }
-// IMPLEMENT IN 1.2 STEP 3
