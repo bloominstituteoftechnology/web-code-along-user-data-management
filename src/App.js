@@ -84,24 +84,6 @@ function App() {
           Sort data by state
         </button>
       </div>
-      
-      {/* <div className="button-container">
-        <button onClick={() => sortGeneric([...uglyData], "email")}>
-          Sort data by email
-        </button>
-        <button onClick={() => sortGeneric([...uglyData], "username")}>
-          Sort data by username
-        </button>
-        <button onClick={() => sortGeneric([...uglyData], "lastName")}>
-          Sort data by last name
-        </button>
-        <button onClick={() => sortGeneric([...uglyData], "dob")}>
-          Sort data by dob
-        </button>
-        <button onClick={() => sortGeneric([...uglyData], "state")}>
-          Sort data by state
-        </button>
-      </div> */}
 
       <div className="users-container">
         {uglyData.map((user) => {

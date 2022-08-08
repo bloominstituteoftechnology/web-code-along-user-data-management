@@ -1,11 +1,13 @@
-export const splitData = () => {
-  
-}
-
-export const sortByUsername = (arr) => {
+export const splitData = (arr, key) => {
   const newArr = [...arr];
   
-  const sorter = newArr.sort((a, b) => {
+  return newArr;
+};
+
+export const sortByUsername = (arr) => {
+  const data = splitData([...arr], 'username');
+  
+  const sorter = data.sort((a, b) => {
     let usernameA = a.username;
     let usernameB = b.username;
 
@@ -20,9 +22,9 @@ export const sortByUsername = (arr) => {
 };
 
 export const sortByLastName = (arr) => {
-  const newArr = [...arr];
+  const data = splitData([...arr], 'name');
 
-  const sorter = newArr.sort((a, b) => {
+  const sorter = data.sort((a, b) => {
     const lNameA = a.profile.name.split(" ")[1].trim();
     const lNameB = b.profile.name.split(" ")[1].trim();
 
@@ -37,9 +39,9 @@ export const sortByLastName = (arr) => {
 };
 
 export const sortByDOB = (arr) => {
-  const newArr = [...arr];
+  const data = splitData([...arr], 'dob');
 
-  const sorter = newArr.sort((a, b) => {
+  const sorter = data.sort((a, b) => {
     const dobA = a.profile.dob;
     const dobB = b.profile.dob;
 
@@ -54,9 +56,9 @@ export const sortByDOB = (arr) => {
 };
 
 export const sortByState = (arr) => {
-  const newArr = [...arr];
+  const data = splitData([...arr], 'address');
 
-  const sorter = newArr.sort((a, b) => {
+  const sorter = data.sort((a, b) => {
     const stateA = a.profile.address.split(",")[2].trim();
     const stateB = b.profile.address.split(",")[2].trim();
 
@@ -71,9 +73,9 @@ export const sortByState = (arr) => {
 };
 
 export const sortByEmail = (arr) => {
-  const newArr = [...arr];
+  const data = splitData([...arr], 'email');
 
-  const sorter = newArr.sort((a, b) => {
+  const sorter = data.sort((a, b) => {
       const emailA = a.email.split("@")[0];
       const emailB = b.email.split("@")[0];
 
@@ -87,6 +89,7 @@ export const sortByEmail = (arr) => {
   return sorter;
 };
 
-export const sortByKey = () => {
-  
+export const sortByKey = (arr, key) => {
+
+  return arr;
 };
