@@ -33,7 +33,7 @@ export const cleanDates = async (arr) => {
     return returnArr;
 }
 
-export const cleanupUndefinedKeys = async (arr) => {
+export const cleanUndefinedKeys = async (arr) => {
     const returnArr = [];
     
     for(let i = 0; i < arr.length; i++) {

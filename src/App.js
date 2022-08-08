@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import _uglyData from "./utils/uglify";
 import { sortByKey } from "./utils/sorting";
-// import { cleanupUndefinedKeys, cleanDates } from './utils/data-clean';
+import { cleanDates, cleanUndefinedKeys } from './utils/data-clean';
 import User from "./components/User";
 import "./styles/App.css";
 
@@ -16,41 +16,41 @@ function App() {
   const resetData = () => {
     setUglyData(initialData);
   };
-
+    
   const sortGeneric = (arr, key) => {
     const newData = sortByKey(arr, key);
     setUglyData(newData);
     return newData;
   };
 
-  // const dateCleaner = async (arr) => {
-  //   const newData = await cleanDates(arr);
-  //   setUglyData(newData);
-  //   return newData;
-  // };
+  const dateCleaner = async (arr) => {
+    const newData = await cleanDates(arr);
+    setUglyData(newData);
+    return newData;
+  };
   
-  // const keyCleaner = async (arr) => {
-  //   const newData = await cleanupUndefinedKeys(arr);
-  //   setUglyData(newData);
-  //   return newData;
-  // };
-  
+  const keyCleaner = async (arr) => {
+    const newData = await cleanUndefinedKeys(arr);
+    setUglyData(newData);
+    return newData;
+  };
+
   return (
     <div className="container">
       <h1>List of Users</h1>
 
       <div className="button-container">
-        {/* <button onClick={() => dateCleaner([...uglyData])}>
+        <button onClick={() => dateCleaner([...uglyData])}>
           Fix date values
-        </button> */}
+        </button>
 
-        {/* <button onClick={() => keyCleaner([...uglyData])}>
+        <button onClick={() => keyCleaner([...uglyData])}>
           Clean unformatted string values
-        </button> */}
+        </button>
 
         <button onClick={() => resetData()}>Reset data</button>
       </div>
-
+      
       <div className="button-container">
         <button onClick={() => sortGeneric([...uglyData], "email")}>
           Sort data by email
