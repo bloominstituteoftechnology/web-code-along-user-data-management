@@ -67,7 +67,7 @@ function App() {
         <button onClick={() => resetData()}>Reset data</button>
       </div>
 
-      {/* <div className="button-container">
+      <div className="button-container">
         <button onClick={() => sortEmail([...uglyData])}>
           Sort data by email
         </button>
@@ -83,7 +83,7 @@ function App() {
         <button onClick={() => sortState([...uglyData])}>
           Sort data by state
         </button>
-      </div> */}
+      </div>
       
       {/* <div className="button-container">
         <button onClick={() => sortGeneric([...uglyData], "email")}>
