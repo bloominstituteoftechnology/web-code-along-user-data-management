@@ -1,23 +1,25 @@
-export const splitData = (arr) => {
+export const splitData = (arr, key) => {
   const newArr = [...arr];
   const goodData = [];
   const badData = [];
 
   for (let i = 0; i < newArr.length; i++) {
-    if (newArr[i][key] === null || newArr[i][key] === undefined || newArr[i][key] === "") {
-      badData.push(newArr[i]);
-    } else {
+    if ((key === "username" || key === "email") && (newArr[i][key] !== null && newArr[i][key] !== undefined && newArr[i][key] !== "")) {
       goodData.push(newArr[i]);
+    } else if((key === "name" || key === "dob" || key === "address") && (newArr[i].profile[key] !== null && newArr[i].profile[key] !== undefined && newArr[i].profile[key] !== "")) {
+      goodData.push(newArr[i]);
+    } else {
+      badData.push(newArr[i]);
     }
   }
   
-  return [...goodData, ...badData];
+  return { goodData, badData };
 };
 
 export const sortByUsername = (arr) => {
-  const newArr = [...arr];
+  const data = splitData([...arr], 'username');
   
-  const sorter = newArr.sort((a, b) => {
+  const sorter = data.goodData.sort((a, b) => {
     let usernameA = a.username;
     let usernameB = b.username;
 
@@ -28,13 +30,13 @@ export const sortByUsername = (arr) => {
     } else return 0;
   });
 
-  return sorter;
+  return [...sorter, ...data.badData];
 };
 
 export const sortByLastName = (arr) => {
-  const newArr = [...arr];
+  const data = splitData([...arr], 'name');
 
-  const sorter = newArr.sort((a, b) => {
+  const sorter = data.goodData.sort((a, b) => {
     const lNameA = a.profile.name.split(" ")[1].trim();
     const lNameB = b.profile.name.split(" ")[1].trim();
 
@@ -45,13 +47,13 @@ export const sortByLastName = (arr) => {
     } else return 0;
   });
 
-  return sorter;
+  return [...sorter, ...data.badData];
 };
 
 export const sortByDOB = (arr) => {
-  const newArr = [...arr];
+  const data = splitData([...arr], 'dob');
 
-  const sorter = newArr.sort((a, b) => {
+  const sorter = data.goodData.sort((a, b) => {
     const dobA = a.profile.dob;
     const dobB = b.profile.dob;
 
@@ -62,13 +64,13 @@ export const sortByDOB = (arr) => {
     } else return 0;
   });
 
-  return sorter;
+  return [...sorter, ...data.badData];
 };
 
 export const sortByState = (arr) => {
-  const newArr = [...arr];
+  const data = splitData([...arr], 'address');
 
-  const sorter = newArr.sort((a, b) => {
+  const sorter = data.goodData.sort((a, b) => {
     const stateA = a.profile.address.split(",")[2].trim();
     const stateB = b.profile.address.split(",")[2].trim();
 
@@ -79,13 +81,13 @@ export const sortByState = (arr) => {
     } else return 0;
   });
 
-  return sorter;
+  return [...sorter, ...data.badData];
 };
 
 export const sortByEmail = (arr) => {
-  const newArr = [...arr];
+  const data = splitData([...arr], 'email');
 
-  const sorter = newArr.sort((a, b) => {
+  const sorter = data.goodData.sort((a, b) => {
       const emailA = a.email.split("@")[0];
       const emailB = b.email.split("@")[0];
 
@@ -96,7 +98,7 @@ export const sortByEmail = (arr) => {
       } else return 0;
   });
 
-  return sorter;
+  return [...sorter, ...data.badData];
 };
 
 export const sortByKey = (arr, key) => {
