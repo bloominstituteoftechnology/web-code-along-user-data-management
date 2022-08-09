@@ -51,6 +51,10 @@ function App() {
     return newData;
   };
 
+  const countUsers = (arr) => {
+    return arr;
+  }
+
   return (
     <div className="container">
       <h1>List of Users</h1>
@@ -101,7 +105,7 @@ function App() {
 
       <div id="user-count" className="button-container">
         <h2>Users: {userCount}</h2>
-        <button onClick={() => countUsers(uglyData.length)}>Update</button>
+        {/* <button onClick={() => countUsers(uglyData)}>Update</button> */}
       </div>
 
       <div className="users-container">
