@@ -19,13 +19,11 @@ function App() {
 
   const resetData = () => {
     setUglyData(initialData);
-    setUserCount(initialData.length);
   };
 
   const sortGeneric = (arr, key) => {
     const newData = sortByKey(arr, key);
     setUglyData(newData);
-    setUserCount(newData.length);
     return newData;
   };
 
@@ -33,7 +31,6 @@ function App() {
     const newData1 = await cleanUndefinedKeys(arr);
     const newData2 = await cleanDates(newData1);
     setUglyData(newData2);
-    setUserCount(newData2.length);
     return newData2;
   };
 
@@ -51,7 +48,6 @@ function App() {
     e.preventDefault();
     const newData = filter(uglyData, field, searchTerm);
     setUglyData(newData);
-    setUserCount(newData.length);
     return newData;
   };
 
@@ -105,7 +101,7 @@ function App() {
 
       <div id="user-count" className="button-container">
         <h2>Users: {userCount}</h2>
-        <button onClick={() => setUserCount(uglyData.length)}>Update</button>
+        <button onClick={() => countUsers(uglyData.length)}>Update</button>
       </div>
 
       <div className="users-container">
