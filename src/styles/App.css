@@ -249,6 +249,15 @@ form {
 /* END OF CLASSES AND IDs, STARTING FROM THE TOP OF THE HTML PAGE */
 
 
-/* START OF PSEUDOCLASSES, STARTING FROM THE TOP OF THE HTML PAGE */
+/* START OF PSEUDOCLASSES/ELEMENTS, STARTING FROM THE TOP OF THE HTML PAGE */
+#search-bar button:hover, #users-count button:hover, #sorting-buttons button:hover, #fixData-buttons button:hover {
+  color: #24272B;
+  background-color: white;
+}
 
-/* END OF PSEUDOCLASSES, STARTING FROM THE TOP OF THE HTML PAGE */
+.container::after {
+  content: 'DO NOT SHARE USER DATA WITH ANY NON-EMPLOYEE!';
+  display: block;
+  margin: 1% 0;
+}
+/* END OF PSEUDOCLASSES/ELEMENTS, STARTING FROM THE TOP OF THE HTML PAGE */
