@@ -88,7 +88,7 @@ function App() {
           </form>
         </div>
 
-        <div className="row">
+        <div id="sorting-buttons" className="row">
           <button onClick={() => sortGeneric([...uglyData], "email")}>
             Sort by email
           </button>
@@ -106,7 +106,7 @@ function App() {
           </button>
         </div>
 
-        <div className="row">
+        <div id="fixData-buttons" className="row">
           <button onClick={() => cleanData([...uglyData])}>Clean data</button>
           <button onClick={() => resetData()}>Reset data</button>
         </div>
@@ -118,7 +118,7 @@ function App() {
         })}
       </div>
 
-      <p onClick={rtt}>Return to Top</p>
+      <button id="rtt" onClick={rtt}>Return to Top</button>
     </div>
   );
 }

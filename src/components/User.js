@@ -3,7 +3,7 @@ import "../styles/User.css";
 
 function User(props) {
   return (
-    <React.Fragment className="user-card">
+    <div className="user-card">
       <h2 style={props.user.formatted}>
         Name:{" "}
         {props.user.profile.name !== undefined && props.user.profile.name !== ""
@@ -11,7 +11,7 @@ function User(props) {
           : "undefined"}
       </h2>
 
-      <div className="fields-container">
+      <div>
         <p style={props.user.formatted}>
           About:{" "}
           {props.user.profile.about !== undefined &&
@@ -66,7 +66,7 @@ function User(props) {
             : "undefined"}
         </p>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 
