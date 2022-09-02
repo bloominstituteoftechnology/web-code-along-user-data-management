@@ -1,3 +1,4 @@
+/* START OF RESET */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -134,22 +135,28 @@ table {
   border-spacing: 0;
 }
 
+/* END OF RESET */
+
+/* START OF CUSTOM STYLES */
+/* UNIVERSAL SELECTOR */
 * {
   box-sizing: border-box;
   max-width: 100%;
   font-size: 62.5%;
 }
 
+/* GENERAL TAG STYLES */
 h1 {
-  
+  font-size: 5rem;
+  text-align: center;
 }
 
 h2 {
-  
+  font-size: 2.5rem;
 }
 
 h3 {
-  
+  font-size: 2rem;
 }
 
 h4,
@@ -157,84 +164,13 @@ h5,
 h6,
 p,
 button,
-input {
-  
-}
-
-.container {
-  
-}
-
-.container h1 {
-  width: 100%;
-  font-size: 5rem;
-  text-align: center;
-  background-color: darkcyan;
-  color: white;
-  border-bottom: 5px solid white;
-}
-
-.container .rtt {
-  width: 100%;
-  padding: 2%;
-  text-align: center;
-  font-size: 2rem;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.users-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  column-gap: 10px;
-}
-
-.button-container {
-  width: 100%;
-  margin: 1% 0;
-  display: flex;
-  justify-content: center;
-  background-color: white;
-  border: 2px solid #fff;
-  background-color: white;
-}
-
-.nav-bar {
-  background-color: whitesmoke;
-  border: 1px solid grey;
-}
-
-.button-container button,
-.button-container form {
-  width: 33%;
-  margin: 1% 5%;
-}
-
-.button-container button {
-  
-}
-
-button.button-key-cleaner {
-
-}
-
-button.button-date-cleaner {
-  
-}
-
-button.button-reset {
-  
+input,
+select {
+  font-size: 1.5rem;
 }
 
 form {
   background: transparent;
 }
 
-h1 #main-header {
-  color: white;
-  margin-top: 2%;
-  padding-top: 1%;
-  background-color: darkcyan;
-  font-size: larger;
-}
+/* END OF GENERAL TAG STYLES */
