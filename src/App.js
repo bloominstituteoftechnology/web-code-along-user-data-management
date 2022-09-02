@@ -62,12 +62,12 @@ function App() {
 
       <div className="button-container">
         <div className="row">
-          <div>
+          <div id="users-count">
             <h2>Users: {userCount}</h2>
             <button onClick={() => countUsers(uglyData)}>Update</button>
           </div>
 
-          <form onSubmit={search}>
+          <form id="search-bar" onSubmit={search}>
             <input
               name="searchTerm"
               type="text"

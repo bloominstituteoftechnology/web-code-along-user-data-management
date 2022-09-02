@@ -134,7 +134,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 /* END OF RESET */
 
 /* START OF CUSTOM STYLES */
@@ -147,8 +146,10 @@ table {
 
 /* GENERAL TAG STYLES */
 h1 {
+  width: 100%;
   font-size: 5rem;
-  text-align: center;
+  background-color: #004BA8;
+  border-bottom: 4px solid #07070A;
 }
 
 h2 {
@@ -172,5 +173,51 @@ select {
 form {
   background: transparent;
 }
-
 /* END OF GENERAL TAG STYLES */
+
+
+/* START OF CLASSES AND IDs, STARTING FROM THE TOP OF THE HTML PAGE */
+.container {
+  margin: auto 0;
+  text-align: center;
+}
+
+.button-container {
+  display: inline-block;
+  margin: 1% 0;
+  padding: 1% 0;
+  background-color: #3E78B2;
+  border-top: 4px solid #07070A;
+  border-bottom: 4px solid #07070A;
+}
+
+.row {
+  display: inline-block;
+  width: 100%;
+  margin: 2% 0;
+}
+
+#users-count, #search-bar {
+  width: 50%;
+}
+
+#users-count h2, #users-count button {
+  display: inline-block;
+  margin: 0 1%;
+  padding: 1% 2%;
+  border-radius: 10px;
+  background-color: white;
+}
+
+#users-count button {
+  padding: .5% 2%;
+}
+
+
+
+/* END OF CLASSES AND IDs, STARTING FROM THE TOP OF THE HTML PAGE */
+
+
+/* START OF PSEUDOCLASSES, STARTING FROM THE TOP OF THE HTML PAGE */
+
+/* END OF PSEUDOCLASSES, STARTING FROM THE TOP OF THE HTML PAGE */
