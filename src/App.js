@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-
 import _uglyData from "./utils/uglify";
-import { cleanupUndefinedKeys, cleanDates } from "./utils/data-clean";
 import { sortByKey } from "./utils/sorting";
+import { cleanUndefinedKeys, cleanDates } from "./utils/data-clean";
 import { filter } from "./utils/filtering";
-
 import User from "./components/User";
-
 import "./styles/App.css";
 
 function App() {
@@ -29,107 +26,99 @@ function App() {
     setUglyData(newData);
   };
 
-  const dateCleaner = async (arr) => {
-    const newData = await cleanDates(arr);
-    setUglyData(newData);
-  };
-
-  const keyCleaner = async (arr) => {
-    const newData = await cleanupUndefinedKeys(arr);
-    setUglyData(newData);
+  const cleanData = async (arr) => {
+    const newData1 = await cleanUndefinedKeys(arr);
+    const newData2 = await cleanDates(newData1);
+    setUglyData(newData2);
+    return newData2;
   };
 
   const searchTermSetter = (e) => {
     setSearchTerm(e.target.value);
-  }
+  };
 
   const fieldSetter = (e) => {
     setField(e.target.value);
-  }
+  };
 
   const search = async (e) => {
     e.preventDefault();
-    const newData = await filter(uglyData, field, searchTerm);
+    const newData = await filter(initialData, field, searchTerm);
     setUglyData(newData);
-  }
+  };
 
   const countUsers = (arr) => {
     const reduce = arr.reduce((accumulator) => {
-      return accumulator += 1;
+      return (accumulator += 1);
     }, 0);
 
     setUserCount(reduce);
     return reduce;
-  }
+  };
 
   return (
-    <div className="">
+    <div className="container">
       <h1>List of Users</h1>
 
       <div className="button-container">
-        <button onClick={() => dateCleaner([...uglyData])}>
-          Fix date values
-        </button>
+        <div className="row">
+          <div id="users-count">
+            <h2>Users: {userCount}</h2>
+            <button onClick={() => countUsers(uglyData)}>Update</button>
+          </div>
 
-        <button onClick={() => keyCleaner([...uglyData])}>
-          Clean unformatted string values
-        </button>
+          <form id="search-bar" onSubmit={search}>
+            <input
+              name="searchTerm"
+              type="text"
+              onChange={searchTermSetter}
+              placeholder="Search..."
+            />
 
-        <form onSubmit={search}>
-          <input
-            name="searchTerm"
-            type="text"
-            onChange={searchTermSetter}
-            placeholder="Search..."
-          />
+            <select name="field" onChange={fieldSetter}>
+              <option value="">Field</option>
+              <option value="name">Name</option>
+              <option value="username">Username</option>
+              <option value="email">Email</option>
+              <option value="company">Company</option>
+              <option value="address">Address</option>
+            </select>
 
-          <select name="field" onChange={fieldSetter}>
-            <option value="">Field</option>
-            <option value="name">Name</option>
-            <option value="username">Username</option>
-            <option value="email">Email</option>
-            <option value="company">Company</option>
-            <option value="address">Address</option>
-          </select>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
 
-          <button type="submit">Submit</button>
-        </form>
+        <div id="sorting-buttons" className="row">
+          <button onClick={() => sortGeneric([...uglyData], "email")}>
+            Sort by email
+          </button>
+          <button onClick={() => sortGeneric([...uglyData], "username")}>
+            Sort by username
+          </button>
+          <button onClick={() => sortGeneric([...uglyData], "lastName")}>
+            Sort by last name
+          </button>
+          <button onClick={() => sortGeneric([...uglyData], "dob")}>
+            Sort by dob
+          </button>
+          <button onClick={() => sortGeneric([...uglyData], "state")}>
+            Sort by state
+          </button>
+        </div>
 
-        <button onClick={() => resetData()}>Reset data</button>
+        <div id="fixData-buttons" className="row">
+          <button onClick={() => cleanData([...uglyData])}>Clean data</button>
+          <button onClick={() => resetData()}>Reset data</button>
+        </div>
       </div>
 
-      <div className="button-container">
-        <button onClick={() => sortGeneric([...uglyData], "email")}>
-          Sort data by email
-        </button>
-        <button onClick={() => sortGeneric([...uglyData], "username")}>
-          Sort data by username
-        </button>
-        <button onClick={() => sortGeneric([...uglyData], "lastName")}>
-          Sort data by last name
-        </button>
-        <button onClick={() => sortGeneric([...uglyData], "dob")}>
-          Sort data by dob
-        </button>
-        <button onClick={() => sortGeneric([...uglyData], "state")}>
-          Sort data by state
-        </button>
-      </div>
-
-      <div id="user-count" className="button-container">
-        <h2>Users: {userCount}</h2>
-        <button onClick={() => countUsers(uglyData)}>Update</button>
-      </div>
-
-      <div className="users-container">
+      <div className="userlist-container">
         {uglyData.map((user) => {
           return <User key={user.id} user={user} />;
         })}
       </div>
 
-      <p className="rtt" onClick={rtt}>
-        Return to Top
-      </p>
+      <button id="rtt" onClick={rtt}>Return to Top</button>
     </div>
   );
 }
