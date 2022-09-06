@@ -140,6 +140,8 @@ table {
 /* UNIVERSAL SELECTOR */
 * {
   box-sizing: border-box;
+  font-size: 62.5%;
+  /* DISCUSS IN STEP 3.2 */
   max-width: 100%;
   font-size: 62.5%;
 }
@@ -184,6 +186,11 @@ form {
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+/* IMPLEMENT IN STEP 2.2 */
+.users-container::after {
+   content: 'Disclaimer: User List May Include Errors :(';
 }
 
 .button-container {
