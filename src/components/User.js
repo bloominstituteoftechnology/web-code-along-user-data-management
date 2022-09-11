@@ -4,7 +4,7 @@ import "../styles/User.css";
 function User(props) {
   return (
     <div className="user-card">
-      <h2 style={props.user.formatted}>
+      <h2 style={props.user.formatted || {}}>
         Name:{" "}
         {props.user.profile.name !== undefined && props.user.profile.name !== ""
           ? props.user.profile.name
@@ -12,7 +12,7 @@ function User(props) {
       </h2>
 
       <div>
-        <p style={props.user.formatted}>
+        <p style={props.user.formatted || {}}>
           About:{" "}
           {props.user.profile.about !== undefined &&
           props.user.profile.about !== ""
@@ -20,28 +20,28 @@ function User(props) {
             : "undefined"}
         </p>
 
-        <p style={props.user.formatted}>
+        <p style={props.user.formatted || {}}>
           Username:{" "}
           {props.user.username !== undefined && props.user.username !== ""
             ? props.user.username
             : "undefined"}
         </p>
 
-        <p style={props.user.formatted}>
+        <p style={props.user.formatted || {}}>
           Email:{" "}
           {props.user.email !== undefined && props.user.email !== ""
             ? props.user.email
             : "undefined"}
         </p>
 
-        <p style={props.user.formatted}>
+        <p style={props.user.formatted || {}}>
           DOB:{" "}
           {props.user.profile.dob !== undefined && props.user.profile.dob !== ""
             ? props.user.profile.dob
             : "undefined"}
         </p>
 
-        <p style={props.user.formatted}>
+        <p style={props.user.formatted || {}}>
           Address:{" "}
           {props.user.profile.address !== undefined &&
           props.user.profile.address !== ""
@@ -49,7 +49,7 @@ function User(props) {
             : "undefined"}
         </p>
 
-        <p style={props.user.formatted}>
+        <p style={props.user.formatted || {}}>
           Company:{" "}
           {props.user.profile.company !== undefined &&
           props.user.profile.company !== ""
@@ -57,12 +57,12 @@ function User(props) {
             : "undefined"}
         </p>
 
-        <p id="no-border" style={props.user.formatted}>
+        <p id="no-border" style={props.user.formatted || {}}>
           Role(s):{" "}
           {props.user.roles !== undefined &&
           props.user.roles !== [] &&
           props.user.roles !== ""
-            ? props.user.roles.map((role) => <span>{role}, </span>)
+            ? props.user.roles.map((role) => <span key={`${props.user.roles.indexOf(role)}-${Math.random().toFixed(3)}`}>{role}, </span>)
             : "undefined"}
         </p>
       </div>
