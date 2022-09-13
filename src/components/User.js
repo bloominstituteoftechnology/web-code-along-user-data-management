@@ -62,7 +62,7 @@ function User(props) {
           {props.user.roles !== undefined &&
           props.user.roles !== [] &&
           props.user.roles !== ""
-            ? props.user.roles.map((role) => <span>{role}, </span>)
+            ? props.user.roles.map((role) => <span key={`${props.user.roles.indexOf(role)}-${Math.random().toFixed(5)}`}>{role}, </span>)
             : "undefined"}
         </p>
       </div>

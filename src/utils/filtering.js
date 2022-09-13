@@ -5,6 +5,8 @@ export const filter = (arr, field, searchStr) => {
     } else if(field === "address" || field === "name" || field === "dob")  {
         return item.profile[field] !== null && item.profile[field] !== undefined && item.profile[field] !== "" && item.profile[field] !== [];
     }
+
+    return null;
   });
 
   const filteredArr = basicFilter.filter((item) => {
